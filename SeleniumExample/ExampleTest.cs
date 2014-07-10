@@ -17,5 +17,16 @@ namespace UnitTestProject1
                 element.Should().HaveCount(3);
             }
         }
+
+        [TestMethod]
+        public void Pressing_AboutMenuItem()
+        {
+            using (var app = AppUnderTest.Start())
+            {
+                app.AboutMenuitem().Click();
+
+                app.Title.Should().Contain("About");
+            }
+        }
     }
 }

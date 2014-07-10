@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="AppUnderTest.cs" />
     <Compile Include="ExampleTest.cs" />
+    <Compile Include="IWebDriverExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
