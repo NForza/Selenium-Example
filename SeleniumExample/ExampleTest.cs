@@ -19,13 +19,24 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void Pressing_AboutMenuItem()
+        public void Pressing_AboutMenuItem_Should_Open_AboutPage()
         {
             using (var app = AppUnderTest.Start())
             {
-                app.AboutMenuitem().Click();
+                app.MainForm().AboutMenuitem().Click();
 
                 app.Title.Should().Contain("About");
+            }
+        }
+
+        [TestMethod]
+        public void Pressing_RegisterMenuItem_Should_Open_RegisterPage()
+        {
+            using (var app = AppUnderTest.Start())
+            {
+                app.MainForm().RegisterMenuitem().Click();
+
+                app.Title.Should().Contain("Register");
             }
         }
     }
