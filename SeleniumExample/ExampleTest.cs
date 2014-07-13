@@ -39,5 +39,17 @@ namespace UnitTestProject1
                 app.Title.Should().Contain("Register");
             }
         }
+
+        [TestMethod]
+        public void Clicking_RequestInfo_On_ContactPage_Should_Open_SendInfoPage()
+        {
+            using (var app = AppUnderTest.Start())
+            {
+                var contactPage = app.MainForm().OpenContactPage();
+                contactPage.RequestInfoLink.Click();
+
+                app.Title.Should().Contain("Request more info");
+            }
+        }
     }
 }
