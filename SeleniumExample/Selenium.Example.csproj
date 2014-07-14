@@ -65,7 +65,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AppUnderTest.cs" />
+    <Compile Include="App.cs" />
     <Compile Include="ContactPage.cs" />
     <Compile Include="ExampleTest.cs" />
     <Compile Include="IWebDriverExtensions.cs" />

@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
 
 namespace UnitTestProject1
 {
@@ -8,19 +7,9 @@ namespace UnitTestProject1
     public class ExampleTest
     {
         [TestMethod]
-        public void Root_Should_Have_3_H2_headers()
-        {
-            using (var app = AppUnderTest.Start())
-            {
-                var element = app.FindElements(By.TagName("h2"));
-                element.Should().HaveCount(3);
-            }
-        }
-
-        [TestMethod]
         public void Pressing_AboutMenuItem_Should_Open_AboutPage()
         {
-            using (var app = AppUnderTest.Start())
+            using (var app = App.Start())
             {
                 app.MainForm().AboutMenuitem().Click();
 
@@ -31,7 +20,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void Pressing_RegisterMenuItem_Should_Open_RegisterPage()
         {
-            using (var app = AppUnderTest.Start())
+            using (var app = App.Start())
             {
                 app.MainForm().RegisterMenuitem().Click();
 
@@ -42,7 +31,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void Clicking_RequestInfo_On_ContactPage_Should_Open_SendInfoPage()
         {
-            using (var app = AppUnderTest.Start())
+            using (var app = App.Start())
             {
                 var contactPage = app.MainForm().OpenContactPage();
                 contactPage.RequestInfoLink.Click();
@@ -54,7 +43,7 @@ namespace UnitTestProject1
         [TestMethod]       
         public void Submitting_RequestInfoPage_Without_Name_Should_Give_ValidationError()
         {
-            using (var app = AppUnderTest.Start())
+            using (var app = App.Start())
             {
                 var requestInfoPage = app.MainForm().OpenContactPage().OpenRequestInfoPage();
                 requestInfoPage.Name = "";
@@ -67,7 +56,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void Submitting_RequestInfoPage_Without_EmailAddress_Should_Give_ValidationError()
         {
-            using (var app = AppUnderTest.Start())
+            using (var app = App.Start())
             {
                 var requestInfoPage = app.MainForm().OpenContactPage().OpenRequestInfoPage();
                 requestInfoPage.Name = "valid name";
@@ -80,13 +69,27 @@ namespace UnitTestProject1
         [TestMethod]
         public void Submitting_RequestInfoPage_With_Invalid_EmailAddress_Should_Give_ValidationError()
         {
-            using (var app = AppUnderTest.Start())
+            using (var app = App.Start())
             {
                 var requestInfoPage = app.MainForm().OpenContactPage().OpenRequestInfoPage();
                 requestInfoPage.Name = "valid name";
                 requestInfoPage.EmailAddress = "this is not a valid email address";
                 requestInfoPage.Submit();
                 requestInfoPage.ValidationMessageFor("EmailAddress").Should().Be("A valid emailaddress is required");
+            }
+        }
+
+        [TestMethod]
+        public void Submitting_RequestInfoPage_With_Name_And_Valid_EmailAddress_Should_Succeed()
+        {
+            using (var app = App.Start())
+            {
+                var requestInfoPage = app.MainForm().OpenContactPage().OpenRequestInfoPage();
+                requestInfoPage.Name = "valid name";
+                requestInfoPage.EmailAddress = "test@test.com";
+                requestInfoPage.Submit();
+                requestInfoPage.ValidationMessageFor("Name").Should().BeNullOrEmpty();
+                requestInfoPage.ValidationMessageFor("EmailAddress").Should().BeNullOrEmpty();
             }
         }
 

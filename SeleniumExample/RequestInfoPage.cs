@@ -45,13 +45,18 @@ namespace UnitTestProject1
 
         public string ValidationMessageFor(string propertyName)
         {
-            var element = webdriver.FindElement(
-                By.XPath(
-                    string.Format(
-                        @"//span[@for=""{0}""]", propertyName)));
-            if (element != null)
+            try
+            {
+                var element = webdriver.FindElement(
+                    By.XPath(
+                        string.Format(
+                            @"//span[@for=""{0}""]", propertyName)));
                 return element.Text;
-            return String.Empty;
+            }
+            catch
+            {
+                return String.Empty;                
+            }
         }
 
         public string EmailAddress
