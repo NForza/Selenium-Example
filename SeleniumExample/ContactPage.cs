@@ -7,7 +7,7 @@ namespace UnitTestProject1
 {
     public class ContactPage
     {
-        private readonly IWebDriver webdriver;
+        internal readonly IWebDriver webdriver;
         public ContactPage(IWebDriver webdriver)
         {
             this.webdriver = webdriver;
@@ -19,6 +19,12 @@ namespace UnitTestProject1
             {
                 return webdriver.FindElement(By.LinkText("Request Info"));
             }
+        }
+
+        public RequestInfoPage OpenRequestInfoPage()
+        {
+            RequestInfoLink.Click();
+            return new RequestInfoPage(webdriver);
         }
     }
 }

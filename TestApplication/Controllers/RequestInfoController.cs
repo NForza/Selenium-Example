@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
-    public class SendInfoController : Controller
+    public class RequestInfoController : Controller
     {
         // GET: SendInfo
         public ActionResult Index()

@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 
 namespace UnitTestProject1
 {
@@ -51,5 +50,45 @@ namespace UnitTestProject1
                 app.Title.Should().Contain("Request more info");
             }
         }
+
+        [TestMethod]       
+        public void Submitting_RequestInfoPage_Without_Name_Should_Give_ValidationError()
+        {
+            using (var app = AppUnderTest.Start())
+            {
+                var requestInfoPage = app.MainForm().OpenContactPage().OpenRequestInfoPage();
+                requestInfoPage.Name = "";
+                requestInfoPage.EmailAddress = "test@test.com";
+                requestInfoPage.Submit();
+                requestInfoPage.ValidationMessageFor("Name").Should().Be("Your name is required");
+            }
+        }
+
+        [TestMethod]
+        public void Submitting_RequestInfoPage_Without_EmailAddress_Should_Give_ValidationError()
+        {
+            using (var app = AppUnderTest.Start())
+            {
+                var requestInfoPage = app.MainForm().OpenContactPage().OpenRequestInfoPage();
+                requestInfoPage.Name = "valid name";
+                requestInfoPage.EmailAddress = "";
+                requestInfoPage.Submit();
+                requestInfoPage.ValidationMessageFor("EmailAddress").Should().Be("A valid emailaddress is required");
+            }
+        }
+
+        [TestMethod]
+        public void Submitting_RequestInfoPage_With_Invalid_EmailAddress_Should_Give_ValidationError()
+        {
+            using (var app = AppUnderTest.Start())
+            {
+                var requestInfoPage = app.MainForm().OpenContactPage().OpenRequestInfoPage();
+                requestInfoPage.Name = "valid name";
+                requestInfoPage.EmailAddress = "this is not a valid email address";
+                requestInfoPage.Submit();
+                requestInfoPage.ValidationMessageFor("EmailAddress").Should().Be("A valid emailaddress is required");
+            }
+        }
+
     }
 }

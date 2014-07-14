@@ -71,6 +71,7 @@
     <Compile Include="IWebDriverExtensions.cs" />
     <Compile Include="MainPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestInfoPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
