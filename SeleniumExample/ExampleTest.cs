@@ -88,8 +88,7 @@ namespace UnitTestProject1
                 requestInfoPage.Name = "valid name";
                 requestInfoPage.EmailAddress = "test@test.com";
                 requestInfoPage.Submit();
-                requestInfoPage.ValidationMessageFor("Name").Should().BeNullOrEmpty();
-                requestInfoPage.ValidationMessageFor("EmailAddress").Should().BeNullOrEmpty();
+                app.Title.Should().Contain("Confirmation");
             }
         }
 

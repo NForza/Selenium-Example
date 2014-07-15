@@ -1,0 +1,13 @@
+﻿@model WebApplication1.Models.RequestInfoSentViewModel
+
+@{
+    ViewBag.Title = "Confirmation";
+}
+
+<h2>Confirm</h2>
+
+<span id="confirmationmessage">An email has been sent to @Model.EmailAddress</span>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
