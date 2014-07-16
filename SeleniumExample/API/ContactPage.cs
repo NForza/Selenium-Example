@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
-namespace UnitTestProject1
+namespace Selenium.Example.API
 {
     public class ContactPage
     {

@@ -1,8 +1,10 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Selenium.Example.API;
 
-namespace UnitTestProject1
+namespace Selenium.Example
 {
+    //Make sure the app is running before starting the tests!
     [TestClass]
     public class ExampleTest
     {
