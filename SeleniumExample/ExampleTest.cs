@@ -80,7 +80,7 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void Submitting_RequestInfoPage_With_Name_And_Valid_EmailAddress_Should_Succeed()
+        public void Submitting_RequestInfoPage_With_Name_And_Valid_EmailAddress_Should_OpenConfirmationPage()
         {
             using (var app = App.Start())
             {
