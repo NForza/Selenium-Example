@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using OpenQA.Selenium;
 
-namespace UnitTestProject1
+namespace Selenium.Example.API
 {
     public class RequestInfoPage
     {
