@@ -4,6 +4,7 @@ using Selenium.Example.API;
 
 namespace Selenium.Example
 {
+    //Make sure the app is running before starting the tests!
     [TestClass]
     public class ExampleTest
     {
